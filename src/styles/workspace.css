@@ -1671,6 +1671,15 @@
 }
 .tbl th:last-child { width: 56px; padding-left: 24px; }
 
+/* Status column (2nd from end) — fixed 180px lane so all pills start
+   at the same x even though each pill is sized to its label. */
+.tbl th:nth-last-child(2),
+.tbl td:nth-last-child(2) {
+  width: 180px;
+  text-align: left;
+  padding-right: 8px;
+}
+
 
 /* ═══════════════════════════════════════════════════════════════════
    RISK BAR
@@ -1762,26 +1771,24 @@
 /* ═══════════════════════════════════════════════════════════════════
    STATUS PILL
    ═══════════════════════════════════════════════════════════════════ */
-/* ─── Status pill — locked uniform width across the column ──────────
-   Width is sized to fit the widest canonical label ("Functional Review")
-   with breathing room so every pill in the column has identical bounds.
-   The dot (.d) is flex:none so it's never squeezed by a long label.
-   The actions column (.tbl td:last-child) below carries its own fixed
-   width so the pill column never crowds the row arrow button. */
+/* ─── Status pill — Google/Material-3 pattern ───────────────────────
+   Pill itself is content-sized (no forced uniform width — that creates
+   awkward dead-space on short labels). Uniformity comes from the
+   parent column being pinned (see .tbl td:nth-last-child(2) below).
+   All pill left-edges align; right-edges vary by label, like every
+   modern status-chip system (Linear, Stripe, Material 3).
+   Dot (.d) is flex:none so it's never squeezed off long labels. */
 .status-pill {
   font: 700 11.5px/1 var(--font-ui);
   letter-spacing: -0.003em;
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   border: 1px solid transparent;
   white-space: nowrap;
-  justify-content: flex-start;
-  text-align: left;
   box-sizing: border-box;
-  min-width: 176px;   /* uniform — fits "Functional Review" with breathing */
 }
 .status-pill.critical {
   background: rgba(196,74,45,0.10);
