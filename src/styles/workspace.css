@@ -1761,17 +1761,17 @@
 .status-pill {
   font: 700 11.5px/1 var(--font-ui);
   letter-spacing: -0.003em;
-  padding: 5px 12px;
+  padding: 5px 11px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
   border: 1px solid transparent;
   white-space: nowrap;
-  min-width: 140px;
   justify-content: center;
   text-align: center;
   box-sizing: border-box;
+  /* width is content-driven; dot kept incompressible via flex:none on .d */
 }
 .status-pill.critical {
   background: rgba(196,74,45,0.10);
