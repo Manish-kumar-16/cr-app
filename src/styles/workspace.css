@@ -1665,7 +1665,11 @@
 
 .tbl td:last-child {
   text-align: right;
+  width: 56px;
+  padding-left: 24px;   /* gutter — keeps status pill column from kissing the arrow */
+  white-space: nowrap;
 }
+.tbl th:last-child { width: 56px; padding-left: 24px; }
 
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1758,20 +1762,26 @@
 /* ═══════════════════════════════════════════════════════════════════
    STATUS PILL
    ═══════════════════════════════════════════════════════════════════ */
+/* ─── Status pill — locked uniform width across the column ──────────
+   Width is sized to fit the widest canonical label ("Functional Review")
+   with breathing room so every pill in the column has identical bounds.
+   The dot (.d) is flex:none so it's never squeezed by a long label.
+   The actions column (.tbl td:last-child) below carries its own fixed
+   width so the pill column never crowds the row arrow button. */
 .status-pill {
   font: 700 11.5px/1 var(--font-ui);
   letter-spacing: -0.003em;
-  padding: 5px 11px;
+  padding: 6px 14px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   border: 1px solid transparent;
   white-space: nowrap;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   box-sizing: border-box;
-  /* width is content-driven; dot kept incompressible via flex:none on .d */
+  min-width: 176px;   /* uniform — fits "Functional Review" with breathing */
 }
 .status-pill.critical {
   background: rgba(196,74,45,0.10);
