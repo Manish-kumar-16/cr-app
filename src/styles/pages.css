@@ -255,6 +255,7 @@
 }
 .status-chip::before {
   content: ""; width: 6px; height: 6px; border-radius: 999px;
+  flex: none; display: inline-block;
 }
 .status-chip.endorsed { background: rgba(0,132,61,0.10); color: #00642E; border-color: rgba(0,132,61,0.25); }
 .status-chip.endorsed::before { background: #00843D; }

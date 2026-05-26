@@ -1761,16 +1761,17 @@
 .status-pill {
   font: 700 11.5px/1 var(--font-ui);
   letter-spacing: -0.003em;
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   border: 1px solid transparent;
   white-space: nowrap;
-  min-width: 92px;
+  min-width: 140px;
   justify-content: center;
   text-align: center;
+  box-sizing: border-box;
 }
 .status-pill.critical {
   background: rgba(196,74,45,0.10);
@@ -1784,6 +1785,8 @@
   border-radius: 999px;
   background: currentColor;
   box-shadow: 0 0 0 2px rgba(255,255,255,0.50);
+  flex: none;
+  display: inline-block;
 }
 
 .status-pill.success {
