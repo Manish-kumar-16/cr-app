@@ -1305,7 +1305,7 @@
 .tbl col.col-prop     { width: 180px; }
 .tbl col.col-value    { width: 100px; }
 .tbl col.col-risk     { width: 120px; }
-.tbl col.col-status   { width: 120px; }
+.tbl col.col-status   { width: 176px; }
 .tbl col.col-actions  { width: 76px; }
 
 /* Bulk-select checkbox cell */
@@ -1781,11 +1781,11 @@
 .status-pill {
   font: 700 11.5px/1 var(--font-ui);
   letter-spacing: -0.003em;
-  padding: 6px 12px;
+  padding: 8px 18px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   border: 1px solid transparent;
   white-space: nowrap;
   box-sizing: border-box;

@@ -106,6 +106,7 @@ export default function Shell() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [fabPeek, setFabPeek] = useState(false);
   const [fabPeekIndex, setFabPeekIndex] = useState(0);
+  const [fabPeekDismissed, setFabPeekDismissed] = useState(false);
   const profileRef = useRef(null);
 
   const GENIE_MS = 380;
@@ -187,7 +188,7 @@ export default function Shell() {
   }, []);
 
   useEffect(() => {
-    if (!railCollapsed || hideRail) return;
+    if (!railCollapsed || hideRail || fabPeekDismissed) return;
     const timers = [];
     const schedulePeek = (delay) => {
       timers.push(setTimeout(() => {
@@ -205,7 +206,14 @@ export default function Shell() {
       clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [railCollapsed, hideRail]);
+  }, [railCollapsed, hideRail, fabPeekDismissed]);
+
+  /* Reset dismiss on route change so peek can resume on the next screen. */
+  useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setFabPeekDismissed(false);
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [path]);
 
   return (
     <div className={appClass}>
@@ -365,8 +373,13 @@ export default function Shell() {
                 type="button"
                 className="procura-peek-close"
                 aria-label="Dismiss"
-                onClick={(e) => { e.stopPropagation(); setFabPeek(false); }}
-              >×</button>
+                onClick={(e) => { e.stopPropagation(); setFabPeek(false); setFabPeekDismissed(true); }}
+              >
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
               <span className="procura-peek-tail" aria-hidden="true"></span>
             </div>
           )}
