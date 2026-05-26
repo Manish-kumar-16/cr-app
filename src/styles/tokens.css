@@ -1,0 +1,368 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CR Flow — Design Tokens (v2 · 2026 Premium)
+   Aligned with Aramco approved palette + type.
+   Light-only main area. Sidebar always dark (architectural).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Brand fonts (Aramco substitutes) ──────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap");
+
+:root {
+  /* ── Sidebar dark palette (architectural, always dark) ─────── */
+  --bg:        #0c1220;
+  --side:      #0f1729;
+  --side-deep: #0a1120;
+
+  /* Sidebar text scale (canonical names = --sb-t* ; legacy --t* kept for the dark sidebar usage) */
+  --sb-t1:     #e8edf5;
+  --sb-t2:     #b6bfd0;
+  --sb-t3:     #7b8598;
+  --sb-t4:     #555f73;
+  --sb-t5:     #3a4459;
+  --sb-hair:   rgba(255,255,255,0.07);
+  --sb-hair-2: rgba(255,255,255,0.12);
+
+  /* Global aliases default to sidebar palette; main area re-scopes (see shell.css .main). */
+  --t1:     var(--sb-t1);
+  --t2:     var(--sb-t2);
+  --t3:     var(--sb-t3);
+  --t4:     var(--sb-t4);
+  --t5:     var(--sb-t5);
+  --hair:   var(--sb-hair);
+  --hair-2: var(--sb-hair-2);
+
+  /* ── Aramco primary palette ────────────────────────────────── */
+  --aramco-green:        #84BD00;
+  --aramco-dark-green:   #00843D;
+  --aramco-blue:         #00A3E0;
+  --aramco-dark-blue:    #0033A0;
+  --aramco-dark-gray:    #323232;
+  --aramco-gray:         #5F6369;
+  --aramco-neutral-gray: #C0C0C0;
+  --aramco-light-gray:   #DADADA;
+
+  /* Short aliases — used pervasively in CSS */
+  --green:   var(--aramco-green);
+  --blue:    var(--aramco-blue);
+  --blue-dk: var(--aramco-dark-blue);
+  --teal:    #00867B;          /* in-product deep teal */
+  --accent-leaf: var(--aramco-green);   /* lime/leaf accent (Saudization, etc.) */
+  --amber:   #FFAA04;
+  --red:     #FF5645;
+  --src:     #7C5CFC;          /* SRC purple — keep separate from --purple-100 */
+
+  /* ── Secondary palette (tinted) ────────────────────────────── */
+  --teal-100:    #26A8AB;
+  --teal-70:     #54BCBE;
+  --teal-40:     #A8DBDC;
+  --purple-100:  #643278;       /* Bid Eval accent */
+  --purple-70:   #8C6595;
+  --purple-40:   #C7B0CC;
+  --yellow-100:  #FFC846;
+  --yellow-70:   #FFD777;
+  --yellow-40:   #FFEBB8;
+  --red-100:     #F05F41;
+  --red-70:      #F58978;
+  --red-40:      #FACBBF;
+
+  /* ── Functional / semantic ─────────────────────────────────── */
+  --func-success: #00843D;
+  --func-info:    #4FC1BB;
+  --func-warning: #FFAA04;
+  --func-error:   #FF5645;
+  --func-new:     #398AE9;
+
+  /* ── Foregrounds (light area) ──────────────────────────────── */
+  --fg-1: #0E1320;     /* primary headlines */
+  --fg-2: #1F2533;     /* body */
+  --fg-3: #3F4A60;     /* secondary */
+  --fg-4: #5F6878;     /* muted */
+  --fg-5: #8A94A5;     /* quiet */
+  --fg-6: #C2CAD7;     /* disabled */
+  --fg-on-dark: #FFFFFF;
+  --link:       #0033A0;
+  --link-hover: #00A3E0;
+
+  /* ── Backgrounds (light area) ──────────────────────────────── */
+  --bg-light:   #F6F8FB;
+  --bg-surface: #FFFFFF;
+  --bg-panel:   #FCFDFE;
+  --bg-muted:   #ECEEF3;
+  --canvas:     var(--bg-light);
+  --surface:    var(--bg-surface);
+
+  /* ── Borders ───────────────────────────────────────────────── */
+  --border-1:      #E8EBF1;
+  --border-2:      #DADEE7;
+  --border-strong: #B6BFCC;
+  --border-focus:  #00A3E0;
+  --border:        var(--border-1);    /* legacy alias */
+
+  /* ── Per-card accent stripes (load-bearing) ────────────────── */
+  --accent-pa:        #0033A0;
+  --accent-pa-bg:     rgba(0,51,160,0.07);
+  --accent-pa-soft:   rgba(0,51,160,0.14);
+  --accent-fr:        #00867B;
+  --accent-fr-bg:     rgba(0,134,123,0.07);
+  --accent-fr-soft:   rgba(0,134,123,0.14);
+  --accent-bid:       #643278;
+  --accent-bid-bg:    rgba(100,50,120,0.07);
+  --accent-bid-soft:  rgba(100,50,120,0.14);
+  --accent-aw:        #00843D;
+  --accent-aw-bg:     rgba(0,132,61,0.07);
+  --accent-aw-soft:   rgba(0,132,61,0.14);
+  --accent-deep-teal:      #00867B;
+  --accent-deep-teal-tint: rgba(0,134,123,0.29);
+
+  /* Accent tints (focus, soft highlights) */
+  --accent-soft: rgba(0,163,224,0.07);
+  --accent-ring: rgba(0,163,224,0.18);
+
+  /* ── Layout ────────────────────────────────────────────────── */
+  --side-w: 280px;
+  --rail-w: 320px;
+
+  /* ── Elevation (premium dual-shadow scale) ─────────────────── */
+  --el-1: 0 1px 2px rgba(15,23,42,0.04);
+  --el-2: 0 1px 2px rgba(15,23,42,0.05),
+          0 1px 1px rgba(15,23,42,0.03);
+  --el-3: 0 1px 2px rgba(15,23,42,0.04),
+          0 8px 24px -8px rgba(15,23,42,0.10);
+  --el-4: 0 1px 2px rgba(15,23,42,0.04),
+          0 24px 60px -20px rgba(15,23,42,0.20);
+  --el-5: 0 2px 4px rgba(15,23,42,0.05),
+          0 40px 80px -24px rgba(15,23,42,0.24);
+
+  /* Approved Aramco shadows */
+  --shadow-card:        3px 8px 30px 1px rgba(168,175,184,0.30);
+  --shadow-dialog:      0 20px 80px 0 rgba(34,53,72,0.25),
+                        0 0 0 1px rgba(34,53,72,0.40);
+  --shadow-popover:     0 6px 24px rgba(34,53,72,0.18);
+  --shadow-inset-field: inset 0 0 0 1px rgba(85,107,129,0.22);
+
+  /* Tinted glow for primary actions */
+  --glow-blue: 0 0 0 1px rgba(0,163,224,0.18),
+               0 8px 24px -8px rgba(0,51,160,0.28);
+  --glow-blue-strong: 0 0 0 1px rgba(0,163,224,0.30),
+                     0 12px 28px -6px rgba(0,51,160,0.36);
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1.4, 0.36, 1);
+  --ease-snap:   cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-1: 120ms;
+  --dur-2: 180ms;
+  --dur-3: 220ms;
+  --dur-4: 320ms;
+
+  /* ── Grain texture (subtle noise — sidebar depth) ──────────── */
+  --grain: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06  0 0 0 0 0.09  0 0 0 0 0.14  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/></svg>");
+
+  /* ── Ink scale (legacy alias for current main-area pages) ──── */
+  --ink-900: var(--fg-1);
+  --ink-700: var(--fg-2);
+  --ink-500: var(--fg-4);
+  --ink-400: var(--fg-5);
+  --ink-300: #94A0B5;
+  --ink-200: var(--fg-6);
+  --ink-100: #E6EAF1;
+
+  /* ── Typography stack ──────────────────────────────────────── */
+  --font-brand:   "Fira Sans", "Ghawar", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-display: "Outfit", "ManifaPro2", "Fira Sans", system-ui, sans-serif;
+  --font-ui:      "Inter", "72", "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "Source Code Pro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font:         var(--font-ui);    /* legacy alias */
+
+  /* ── Type size scale (px) ──────────────────────────────────── */
+  --t-10: 10px;
+  --t-11: 11px;
+  --t-12: 12px;
+  --t-13: 13px;
+  --t-14: 14px;
+  --t-15: 15px;
+  --t-16: 16px;
+  --t-18: 18px;
+  --t-20: 20px;
+  --t-22: 22px;
+  --t-24: 24px;
+  --t-26: 26px;
+  --t-28: 28px;
+  --t-30: 30px;
+  --t-32: 32px;
+  --t-36: 36px;
+  --t-42: 42px;
+  --t-46: 46px;
+  --t-52: 52px;
+
+  /* ── Spacing scale (base 4) ────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  50px;
+  --space-10: 60px;
+  --space-11: 80px;
+  --space-12: 100px;
+
+  /* ── Radius scale ──────────────────────────────────────────── */
+  --r-xs:   4px;
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-2xl:  20px;
+  --r-full: 9999px;
+  /* Approved aliases */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 9999px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Reset & Base
+   ═══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg-2);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1, "cv11" 1;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* App shell (Workspace + nav) locks scroll to internal panes.
+   Login and other standalone routes scroll naturally. */
+.app {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::selection {
+  background: rgba(0,163,224,0.22);
+  color: var(--fg-1);
+}
+
+/* ── Scrollbars ────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15,23,42,0.14);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15,23,42,0.22);
+}
+
+.side ::-webkit-scrollbar-thumb,
+.sidebar ::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.10);
+}
+
+.side ::-webkit-scrollbar-thumb:hover,
+.sidebar ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ── Utility ────────────────────────────────────────────────────── */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Generic display heading (Outfit) — opt-in */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+
+.num-tabular,
+.num,
+.v,
+.ct,
+.val,
+.kpi-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "ss01" 1, "cv11" 1;
+}
+
+/* Premium focus ring (apply to focus-visible) */
+:where(button, a, [role="button"], input, select, textarea):focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--bg-surface),
+    0 0 0 4px var(--accent-ring);
+  border-radius: inherit;
+}
