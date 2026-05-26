@@ -181,7 +181,11 @@ export default function Login() {
               className="sso"
               onClick={() => {
                 setLoading(true);
-                setTimeout(() => { setLoading(false); navigate('/chat'); }, 1200);
+                setTimeout(() => {
+                  try { localStorage.setItem('cr-auth', '1'); } catch { /* ignore quota */ }
+                  setLoading(false);
+                  navigate('/chat');
+                }, 1200);
               }}
             >
               <span className="sso-mark">{ICO.shield}</span>
