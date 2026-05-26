@@ -46,7 +46,8 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<RequireAuth><Shell /></RequireAuth>}>
-          <Route index element={<Workspace />} />
+          <Route index element={<Navigate to="/overview" replace />} />
+          <Route path="/overview" element={<Workspace />} />
           <Route path="/inbox" element={<Queue which="inbox" />} />
           <Route path="/reviews" element={<Queue which="reviews" />} />
           <Route path="/bidding" element={<Queue which="bidding" />} />

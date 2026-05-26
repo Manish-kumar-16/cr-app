@@ -7,6 +7,7 @@ import procuraOrb from '../assets/procura-orb.png';
 
 const PAGE_LABELS = {
   '/':                  'Overview',
+  '/overview':          'Overview',
   '/inbox':             'Inbox',
   '/reviews':           'Reviews',
   '/bidding':           'Bidding',
@@ -75,7 +76,7 @@ function HeaderContext({ path, pageLabel, onNavigate }) {
     );
   }
 
-  if (path === '/') {
+  if (path === '/' || path === '/overview') {
     return (
       <div className="cmd-context cmd-context-overview">
         <span className="cc-eyebrow">Today</span>

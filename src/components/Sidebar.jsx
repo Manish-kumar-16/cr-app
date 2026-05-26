@@ -13,7 +13,7 @@ import logoSrc from '../assets/logo-sidebar.png';
 
 /* ---- Route mapping for workflow nav rows ---- */
 const WORKFLOW_ROUTES = {
-  overview: '/',
+  overview: '/overview',
   inbox:    '/inbox',
   reviews:  '/reviews',
   bidding:  '/bidding',
